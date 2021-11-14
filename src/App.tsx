@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
         <h1 className="text-5xl">Tailwind CSS</h1>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
