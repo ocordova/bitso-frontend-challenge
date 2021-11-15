@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import '../../global.css'
@@ -7,8 +7,10 @@ import { classNames } from '../../../utils/css'
 export interface CellProps {
   /** Represents the state of the cell */
   state: number
+  rowIndex: number
+  colIndex: number
   /** Callback when a cell is clicked */
-  onClick?(): void
+  onClick?(rowIndex: number, colIndex: number): void
 }
 
 const styles = {
@@ -23,8 +25,12 @@ const cellClassName = (state: CellProps['state']) => {
   )
 }
 
-export const Cell = ({ onClick, state }: CellProps) => {
-  return <div className={cellClassName(state)} onClick={onClick}></div>
+export const Cell = ({ onClick, state, rowIndex, colIndex }: CellProps) => {
+  const handleCellClick = useCallback(() => {
+    onClick && onClick(rowIndex, colIndex)
+  }, [])
+
+  return <div className={cellClassName(state)} onClick={handleCellClick}></div>
 }
 
 Cell.propTypes = {

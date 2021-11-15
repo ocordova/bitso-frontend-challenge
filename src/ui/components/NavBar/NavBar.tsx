@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 
 import '../global.css'
 import { TextField } from '../'
@@ -12,12 +12,17 @@ export interface NavBarProps {
   /** Number of cols to display */
   settings: Settings
   /* Callback settings value is changed */
-  onChange?(rows: Settings['rows'], cols: Settings['cols']): void
+  onChange?(rows: number, cols: number): void
 }
 
 export const NavBar = ({ settings, onChange }: NavBarProps) => {
-  const [rows, setRows] = useState(settings.rows)
-  const [cols, setCols] = useState(settings.cols)
+  const [rows, setRows] = useState(0)
+  const [cols, setCols] = useState(0)
+
+  useEffect(() => {
+    setRows(settings.rows)
+    setCols(settings.cols)
+  }, [])
 
   const handleRowsChange = useCallback(
     (newValue) => setRows(parseInt(newValue)),
@@ -29,9 +34,9 @@ export const NavBar = ({ settings, onChange }: NavBarProps) => {
     []
   )
 
-  const resize = useCallback(() => {
+  const resize = () => {
     onChange && onChange(rows, cols)
-  }, [onChange])
+  }
 
   return (
     <nav className="mx-auto px-8 md:px-0 bg-white">

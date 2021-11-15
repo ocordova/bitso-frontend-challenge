@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import { Grid, Card, Stats, NavBar } from '../components'
 import { World } from '../../core/entities'
@@ -7,10 +7,14 @@ export const MainView = () => {
   const [state, setState] = useState({ world: new World(12, 12) })
 
   const handleResize = (rows: number, cols: number) => {
-    console.log('ress')
     const newWorld = new World(rows, cols)
     setState({ ...state, world: newWorld })
   }
+
+  const handleCellClick = useCallback((rowIndex: number, colIndex: number) => {
+    state.world.createLand(rowIndex, colIndex)
+    setState((data) => ({ ...data, world: state.world }))
+  }, [])
 
   return (
     <div className="min-h-full">
@@ -27,10 +31,9 @@ export const MainView = () => {
                   <Grid.Cell
                     key={`${rowIndex}_${colIndex}`}
                     state={state.world.getCellValue(rowIndex, colIndex)}
-                    onClick={() => {
-                      state.world.createLand(rowIndex, colIndex)
-                      setState((data) => ({ ...data, world: state.world }))
-                    }}
+                    rowIndex={rowIndex}
+                    colIndex={colIndex}
+                    onClick={handleCellClick}
                   />
                 ))
               )}
