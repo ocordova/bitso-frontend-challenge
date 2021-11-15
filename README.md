@@ -36,3 +36,8 @@ src
 - Display the count of islands
 - Finish testing
 - More performance improvements
+
+## Nice to have
+
+- Measure performance vs SVG, Canvas implementations
+- Try a Dummy grid and only create active squares to boost performance
