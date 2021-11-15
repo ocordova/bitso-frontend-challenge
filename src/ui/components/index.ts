@@ -3,6 +3,9 @@
  * It will be easier to identify if one is missing
  */
 
+export { Board } from './Board/Board'
+export type { BoardProps } from './Board/Board'
+
 export { Card } from './Card/Card'
 export type { CardProps } from './Card/Card'
 

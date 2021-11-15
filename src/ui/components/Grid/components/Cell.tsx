@@ -7,7 +7,9 @@ import { classNames } from '../../../utils/css'
 export interface CellProps {
   /** Represents the state of the cell */
   state: number
+  /** Cell row position in the board */
   rowIndex: number
+  /** Cell col position in the board */
   colIndex: number
   /** Callback when a cell is clicked */
   onClick?(rowIndex: number, colIndex: number): void

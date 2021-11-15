@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
-import { Grid, Card, Stats, NavBar } from '../components'
+import { Grid, Card, Stats, NavBar, Board } from '../components'
 import { World } from '../../core/entities'
 
 export const MainView = () => {
@@ -11,10 +11,9 @@ export const MainView = () => {
     setState({ ...state, world: newWorld })
   }
 
-  const handleCellClick = useCallback((rowIndex: number, colIndex: number) => {
-    state.world.createLand(rowIndex, colIndex)
-    setState((data) => ({ ...data, world: state.world }))
-  }, [])
+  const handleBoardChange = (world: World) => {
+    setState({ ...state, world: world })
+  }
 
   return (
     <div className="min-h-full">
@@ -25,19 +24,7 @@ export const MainView = () => {
       <main className="flex">
         <div className="max-w-screen-xl mx-auto p-8">
           <Card>
-            <Grid cols={state.world.cols}>
-              {state.world.grid.map((row, rowIndex) =>
-                row.map((col, colIndex) => (
-                  <Grid.Cell
-                    key={`${rowIndex}_${colIndex}`}
-                    state={state.world.getCellValue(rowIndex, colIndex)}
-                    rowIndex={rowIndex}
-                    colIndex={colIndex}
-                    onClick={handleCellClick}
-                  />
-                ))
-              )}
-            </Grid>
+            <Board world={state.world} onChange={handleBoardChange} />
             <Stats>
               <Stats.Item
                 title="Cells filled"
