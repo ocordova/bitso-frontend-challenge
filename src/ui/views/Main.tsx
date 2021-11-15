@@ -25,13 +25,6 @@ export const MainView = () => {
         <div className="max-w-screen-xl mx-auto p-8">
           <Card>
             <Board world={state.world} onChange={handleBoardChange} />
-            <Stats>
-              <Stats.Item
-                title="Cells filled"
-                value={state.world.getCellCount()}
-              />
-              <Stats.Item title="Islands" value={0} />
-            </Stats>
           </Card>
         </div>
       </main>

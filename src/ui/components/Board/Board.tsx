@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { World } from '../../../core/entities'
 
-import { Grid } from '../'
+import { Grid, Stats } from '../'
 import '../global.css'
 
 export interface BoardProps {
@@ -18,18 +18,24 @@ export const Board = ({ world, onChange }: BoardProps) => {
   }, [])
 
   return (
-    <Grid cols={world.cols}>
-      {world.grid.map((row, rowIndex) =>
-        row.map((col, colIndex) => (
-          <Grid.Cell
-            key={`${rowIndex}_${colIndex}`}
-            state={world.getCellValue(rowIndex, colIndex)}
-            rowIndex={rowIndex}
-            colIndex={colIndex}
-            onClick={handleCellClick}
-          />
-        ))
-      )}
-    </Grid>
+    <>
+      <Grid cols={world.cols}>
+        {world.grid.map((row, rowIndex) =>
+          row.map((col, colIndex) => (
+            <Grid.Cell
+              key={`${rowIndex}_${colIndex}`}
+              state={world.getCellValue(rowIndex, colIndex)}
+              rowIndex={rowIndex}
+              colIndex={colIndex}
+              onClick={handleCellClick}
+            />
+          ))
+        )}
+      </Grid>
+      <Stats>
+        <Stats.Item title="Cells filled" value={world.getCellCount()} />
+        <Stats.Item title="Islands" value={0} />
+      </Stats>
+    </>
   )
 }
