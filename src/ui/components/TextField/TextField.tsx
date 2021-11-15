@@ -46,7 +46,7 @@ export const TextField = ({
     (event: React.ChangeEvent<HTMLInputElement>) => {
       onChange && onChange(event.currentTarget.value, name)
     },
-    [onChange]
+    [onChange, name]
   )
 
   return (

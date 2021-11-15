@@ -22,7 +22,7 @@ export const NavBar = ({ settings, onChange }: NavBarProps) => {
   useEffect(() => {
     setRows(settings.rows)
     setCols(settings.cols)
-  }, [])
+  }, [settings])
 
   const handleRowsChange = useCallback(
     (newValue) => setRows(parseInt(newValue)),

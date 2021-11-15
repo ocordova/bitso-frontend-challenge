@@ -12,10 +12,13 @@ export interface BoardProps {
 }
 
 export const Board = ({ world, onChange }: BoardProps) => {
-  const handleCellClick = useCallback((rowIndex: number, colIndex: number) => {
-    world.createLand(rowIndex, colIndex)
-    onChange && onChange(world)
-  }, [])
+  const handleCellClick = useCallback(
+    (rowIndex: number, colIndex: number) => {
+      world.createLand(rowIndex, colIndex)
+      onChange && onChange(world)
+    },
+    [onChange, world]
+  )
 
   return (
     <>

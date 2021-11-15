@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 
-import { Grid, Card, Stats, NavBar, Board } from '../components'
+import { Card, NavBar, Board } from '../components'
 import { World } from '../../core/entities'
 
 export const MainView = () => {

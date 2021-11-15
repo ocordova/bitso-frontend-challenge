@@ -30,7 +30,7 @@ const cellClassName = (state: CellProps['state']) => {
 export const Cell = ({ onClick, state, rowIndex, colIndex }: CellProps) => {
   const handleCellClick = useCallback(() => {
     onClick && onClick(rowIndex, colIndex)
-  }, [])
+  }, [colIndex, onClick, rowIndex])
 
   return <div className={cellClassName(state)} onClick={handleCellClick}></div>
 }
