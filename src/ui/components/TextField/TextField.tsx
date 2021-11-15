@@ -11,7 +11,7 @@ export interface TextFieldProps {
   /* Hint text to display */
   placeholder?: string
   /* Initial value for the input */
-  value?: string
+  value?: string | number
   /* Label for the input */
   label: string
   /* Name of the input */
@@ -23,7 +23,7 @@ export interface TextFieldProps {
   /** Behavior of the native HTML attribute, limiting the minimum value */
   min?: number
   /* Callback when value is changed */
-  onChange?(value: string): void
+  onChange?(value: string, name: string): void
 }
 
 const styles = {
@@ -44,7 +44,7 @@ export const TextField = ({
 
   const handleInputValueChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange && onChange(event.currentTarget.value)
+      onChange && onChange(event.currentTarget.value, name)
     },
     [onChange]
   )
@@ -56,6 +56,7 @@ export const TextField = ({
         <input
           type={type ? type : 'text'}
           name={name}
+          value={value}
           min={min}
           inputMode={inputMode}
           className={inputClassName}

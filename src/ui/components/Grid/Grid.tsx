@@ -16,7 +16,7 @@ export interface GridProps {
 }
 
 const styles = {
-  base: 'grid'
+  base: 'grid overflow-auto'
 }
 
 const gridClassName = (cols: GridProps['cols']) => {
