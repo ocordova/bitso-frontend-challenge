@@ -1,3 +1,5 @@
+import { depthFirstSearch } from './utils'
+
 export class World {
   rows: number
   cols: number
@@ -25,5 +27,18 @@ export class World {
     const flatten = this.grid.reduce((acc, val) => acc.concat(val), [])
     const onlyOnes = flatten.filter((x) => x === 1)
     return onlyOnes.length || 0
+  }
+
+  getCountOfIslads = (): number => {
+    let count = 0
+    const clone = [...this.grid]
+    for (let row = 0; row < clone.length; row++) {
+      for (let col = 0; col < clone[row].length; col++) {
+        if (clone[row][col] === 1) {
+          depthFirstSearch(row, col, clone)
+        }
+      }
+    }
+    return count
   }
 }
