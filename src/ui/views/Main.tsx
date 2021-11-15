@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { World } from '../../core/entities'
-import { Grid } from '../components'
+import { Grid, Card, Stats } from '../components'
 
 export const MainView = () => {
   const newWorld = new World(20, 20)
@@ -27,8 +27,12 @@ export const MainView = () => {
   }
 
   return (
-    <div className="flex h-screen content-center">
+    <Card>
       <Grid cols={state.world.cols}>{GridContent()}</Grid>
-    </div>
+      <Stats>
+        <Stats.Item title="Cells filled" value={state.world.getCellCount()} />
+        <Stats.Item title="Islands" value={0} />
+      </Stats>
+    </Card>
   )
 }

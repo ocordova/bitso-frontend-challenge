@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import '../global.css'
@@ -16,7 +16,7 @@ export interface GridProps {
 }
 
 const styles = {
-  base: 'grid m-auto'
+  base: 'grid'
 }
 
 const gridClassName = (cols: GridProps['cols']) => {

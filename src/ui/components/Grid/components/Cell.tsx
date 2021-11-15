@@ -12,8 +12,8 @@ export interface CellProps {
 }
 
 const styles = {
-  base: 'w-5 h-5 border border-gray-400 hover:opacity-50 flex items-center cursor-pointer',
-  land: 'bg-green-500',
+  base: 'w-5 h-5 border border-blue-400 hover:opacity-50 flex items-center cursor-pointer',
+  land: 'bg-green-400',
   water: 'bg-blue-500'
 }
 

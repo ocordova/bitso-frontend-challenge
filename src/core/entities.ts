@@ -1,5 +1,3 @@
-import { depthSearch } from './utils'
-
 export class World {
   rows: number
   cols: number

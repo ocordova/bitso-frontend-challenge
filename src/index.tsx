@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
-    <MainView />
+    <div className="flex h-screen mx-auto max-w-lg items-center">
+      <MainView />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 )
