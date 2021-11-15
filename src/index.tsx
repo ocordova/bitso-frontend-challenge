@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="flex h-screen mx-auto max-w-lg items-center">
+    <div className="flex h-screen w-full bg-gray-50 justify-center items-center">
       <MainView />
     </div>
   </React.StrictMode>,
