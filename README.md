@@ -2,6 +2,10 @@
 
 Web app that lets you create islands
 
+## Preview
+
+![](docs/preview.gif?raw=true)
+
 ## Getting started
 
 Steps to run the project:
@@ -33,11 +37,12 @@ src
 
 ## TODO
 
-- Display the count of islands
-- Finish testing
+- ~~Display the count of islands~~
+- ~~Finish unit testing~~
+- E2E Tests with cypress
 - More performance improvements
 
 ## Nice to have
 
-- Measure performance vs SVG, Canvas implementations
+- Measure performance vs SVG or Canvas implementations
 - Try a Dummy grid and only create active squares to boost performance
