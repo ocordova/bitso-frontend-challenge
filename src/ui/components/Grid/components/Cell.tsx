@@ -15,7 +15,7 @@ export interface CellProps {
   onClick?(rowIndex: number, colIndex: number): void
 }
 
-const styles = {
+export const styles = {
   base: 'w-5 h-5 border border-blue-400 hover:opacity-50 flex items-center cursor-pointer',
   land: 'bg-green-400',
   water: 'bg-blue-500'

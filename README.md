@@ -7,7 +7,7 @@ Web app that lets you create islands
 Steps to run the project:
 
 ```bash
-npm run start:
+npm run start
 ```
 
 Run tests
