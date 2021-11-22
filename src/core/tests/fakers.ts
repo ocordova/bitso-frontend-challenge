@@ -4,8 +4,8 @@ import { World } from '../entities'
 
 export const worldFaker = (overrides: object = {}): World => {
   const data = {
-    rows: faker.random.number({ min: 0, max: 10 }),
-    cols: faker.random.number({ min: 0, max: 10 }),
+    rows: faker.datatype.number({ min: 0, max: 10 }),
+    cols: faker.datatype.number({ min: 0, max: 10 }),
     ...overrides
   }
 
