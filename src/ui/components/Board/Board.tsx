@@ -37,7 +37,7 @@ export const Board = ({ world, onChange }: BoardProps) => {
       </Grid>
       <Stats>
         <Stats.Item title="Cells filled" value={world.getCellCount()} />
-        <Stats.Item title="Islands" value={0} />
+        <Stats.Item title="Islands" value={world.getCountOfIslads()} />
       </Stats>
     </>
   )

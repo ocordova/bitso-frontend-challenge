@@ -29,16 +29,21 @@ export class World {
     return onlyOnes.length || 0
   }
 
-  getCountOfIslads = (): number => {
+  getCountOfIslads() {
     let count = 0
-    const clone = [...this.grid]
+    var clone = this.grid.map((arr) => {
+      return arr.slice()
+    })
+
     for (let row = 0; row < clone.length; row++) {
       for (let col = 0; col < clone[row].length; col++) {
         if (clone[row][col] === 1) {
+          count++
           depthFirstSearch(row, col, clone)
         }
       }
     }
+
     return count
   }
 }
