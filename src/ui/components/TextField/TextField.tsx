@@ -38,7 +38,8 @@ export const TextField = ({
   type,
   inputMode,
   min,
-  onChange
+  onChange,
+  ...more
 }: TextFieldProps) => {
   const inputClassName = classNames(styles.base)
 
@@ -62,6 +63,7 @@ export const TextField = ({
           className={inputClassName}
           placeholder={placeholder}
           onChange={handleInputValueChange}
+          {...more}
         ></input>
       </div>
     </label>

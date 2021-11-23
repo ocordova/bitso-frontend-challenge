@@ -28,6 +28,7 @@ export const Grid = ({ children, cols, rows }: GridProps) => {
   return (
     <div
       className={gridClassName(cols)}
+      data-cy="grid"
       style={{ gridTemplateColumns: `repeat(${cols}, 20px)` }}
     >
       {children}

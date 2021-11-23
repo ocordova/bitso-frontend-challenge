@@ -51,6 +51,7 @@ export const NavBar = ({ settings, onChange }: NavBarProps) => {
               type="number"
               inputMode="numeric"
               onChange={handleRowsChange}
+              data-cy="nav-bar-rows"
             />
             <TextField
               label="Cols"
@@ -60,6 +61,7 @@ export const NavBar = ({ settings, onChange }: NavBarProps) => {
               type="number"
               inputMode="numeric"
               onChange={handleColsChange}
+              data-cy="nav-bar-cols"
             />
           </div>
           <div className="flex items-end">
@@ -67,6 +69,7 @@ export const NavBar = ({ settings, onChange }: NavBarProps) => {
               type="button"
               onClick={resize}
               className="flex flex-1 ml-4 items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              data-cy="nav-bar-resize-button"
             >
               Resize
             </button>
