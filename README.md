@@ -14,10 +14,17 @@ Steps to run the project:
 npm run start
 ```
 
-Run tests
+Run unit tests
 
 ```bash
 npm run test
+
+```
+
+Run unit E2E tests
+
+```bash
+npm run cypress
 
 ```
 
@@ -39,7 +46,7 @@ src
 
 - ~~Display the count of islands~~
 - ~~Finish unit testing~~
-- E2E Tests with cypress
+- ~~E2E Tests with cypress~~
 - More performance improvements
 
 ## Nice to have
