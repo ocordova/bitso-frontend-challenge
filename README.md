@@ -21,10 +21,10 @@ npm run test
 
 ```
 
-Run unit E2E tests
+Run E2E tests
 
 ```bash
-npm run cypress
+npm run e2e
 
 ```
 
