@@ -1,16 +1,14 @@
-import { depthFirstSearch } from './utils'
+import { depthFirstSearch } from '../utils'
 
 export class World {
   rows: number
   cols: number
   grid: number[][]
 
-  constructor(rows: number, cols: number) {
+  constructor(rows: number, cols: number, grid: grid) {
     this.rows = rows
     this.cols = cols
-
-    let emptyGrid = Array.from(Array(rows), () => Array(cols).fill(0))
-    this.grid = emptyGrid
+    this.grid = grid
   }
 
   createLand = (row: number, col: number): void => {
@@ -45,5 +43,13 @@ export class World {
     }
 
     return count
+  }
+}
+
+export class Bitcoin {
+  id = ''
+
+  constructor(data: Partial<Bitcoin>) {
+    Object.assign(this, data)
   }
 }
