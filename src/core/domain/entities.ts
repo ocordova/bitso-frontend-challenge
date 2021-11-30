@@ -1,16 +1,20 @@
-import { depthFirstSearch } from './utils'
+import { depthFirstSearch, isNumeric } from '../utils'
 
 export class World {
   rows: number
   cols: number
   grid: number[][]
 
-  constructor(rows: number, cols: number) {
+  constructor(rows: number, cols: number, grid: number[][] | null = null) {
     this.rows = rows
     this.cols = cols
 
-    let emptyGrid = Array.from(Array(rows), () => Array(cols).fill(0))
-    this.grid = emptyGrid
+    if (grid !== null) {
+      this.grid = grid
+    } else {
+      let emptyGrid = Array.from(Array(rows), () => Array(cols).fill(0))
+      this.grid = emptyGrid
+    }
   }
 
   createLand = (row: number, col: number): void => {
@@ -45,5 +49,28 @@ export class World {
     }
 
     return count
+  }
+}
+
+export class Bitcoin {
+  id = ''
+  private vowels = ['a', 'e', 'i', 'o', 'u']
+
+  constructor(data: Partial<Bitcoin>) {
+    Object.assign(this, data)
+  }
+
+  private characterToStatus(character: string): number {
+    if (this.vowels.includes(character) || isNumeric(character)) {
+      return 0
+    }
+
+    return 1
+  }
+
+  getRowsStatus = (): number[] => {
+    const arr = this.id.split('')
+    const row = arr.map((elem) => this.characterToStatus(elem))
+    return row
   }
 }

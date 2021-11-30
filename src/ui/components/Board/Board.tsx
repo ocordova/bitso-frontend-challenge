@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { World } from '../../../core/entities'
+import { World } from '../../../core/domain/entities'
 
 import { Grid, Stats } from '../'
 import '../global.css'
