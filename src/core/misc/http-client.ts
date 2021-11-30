@@ -4,12 +4,8 @@ export interface IHttpClientRequestParams {
   url: string
 }
 
-export interface IHttpResponse {
-  data: any
-}
-
 export interface IHttpClient {
-  get<T>(parameters: IHttpClientRequestParams): Promise<IHttpResponse>
+  get<T>(parameters: IHttpClientRequestParams): Promise<T>
 }
 
 export class HttpClient implements IHttpClient {

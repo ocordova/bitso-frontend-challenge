@@ -24,3 +24,8 @@ export const depthFirstSearch = (
   // Explore up
   depthFirstSearch(row - 1, col, grid)
 }
+
+export const isNumeric = (str: string): boolean => {
+  if (typeof str != 'string') return false
+  return !isNaN(parseInt(str))
+}

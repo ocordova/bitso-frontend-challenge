@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 import { Card, NavBar, Board } from '../components'
 import { World } from '../../core/domain/entities'
+import { BitcoinController } from '../../core/presentation/controllers'
 
 export const MainView = () => {
-  const [state, setState] = useState(null)
+  const bitcoinController = new BitcoinController()
+  const [state, setState] = useState({ world: new World(12, 12) })
   const [isLoading, setIsLoading] = useState(true)
 
   const handleResize = (rows: number, cols: number) => {
@@ -17,26 +19,11 @@ export const MainView = () => {
   }
 
   const getBitcoins = async () => {
-    const fetchedData: any = []
-    const bitcoins = [[0, 1, 0, 1, 0]]
-    const data = await fetch('https://www.reddit.com/r/bitcoin.json')
-      .then((response) => response.json())
-      .then((data) => {
-        const children = data.data.children
-        console.log(children)
-        for (let i = 0; i < children.length; i++) {
-          const element = children[i]
-          console.log(element)
-          const row = element.data.id
-          console.log(row)
-          fetchedData.append(row)
-        }
-      })
-      .catch((err) => {})
+    const grid = await bitcoinController.getBitocoinsGrid()
+    const rowsSize = grid[0].length
+    const colsSize = grid.length
 
-    console.log(fetchedData)
-
-    const newWorld = new World(rows, cols, grid)
+    const newWorld = new World(rowsSize, colsSize, grid)
     setState({ world: newWorld })
     setIsLoading(false)
   }
@@ -44,15 +31,17 @@ export const MainView = () => {
   useEffect(() => {
     setIsLoading(true)
     getBitcoins()
-  }, [setIsLoading])
+  }, [])
 
-  const isLoadingMarkdown = () => {
-    return <div>IsLoading</div>
+  const IsLoadingMarkdown = () => {
+    return (
+      <div className="max-w-sm mx-auto flex justify-center">Loading...</div>
+    )
   }
 
   const PageMarkdown = () => {
     return (
-      <div className="min-h-full">
+      <>
         <NavBar
           settings={{ rows: state.world.rows, cols: state.world.cols }}
           onChange={handleResize}
@@ -64,14 +53,14 @@ export const MainView = () => {
             </Card>
           </div>
         </main>
-      </div>
+      </>
     )
   }
 
   return (
-    <>
-      {isLoading && isLoadingMarkdown}
-      {!isLoading && PageMarkdown}
-    </>
+    <div className="min-h-full">
+      {isLoading && <IsLoadingMarkdown />}
+      {!isLoading && <PageMarkdown />}
+    </div>
   )
 }

@@ -4,17 +4,11 @@ import { Bitcoin } from './entities'
 export class BitcoinAdapter {
   singlenEtityBitcoin = (bitcoin: Partial<IBitcoinChildren>) => {
     return new Bitcoin({
-      id: bitcoin.id
+      id: bitcoin.data?.id
     })
   }
 
-  toEntity(data: IBitcoinChildren[]) {
-    if (!data) return null
-
-    if (Array.isArray(data)) {
-      return data.map(this.singlenEtityBitcoin)
-    } else {
-      return this.singlenEtityBitcoin(data)
-    }
+  multipleToEntity(data: IBitcoinChildren[]) {
+    return data.map(this.singlenEtityBitcoin)
   }
 }
