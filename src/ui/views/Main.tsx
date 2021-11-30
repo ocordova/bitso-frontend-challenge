@@ -20,8 +20,8 @@ export const MainView = () => {
 
   const getBitcoins = async () => {
     const grid = await bitcoinController.getBitocoinsGrid()
-    const rowsSize = grid[0].length
-    const colsSize = grid.length
+    const rowsSize = grid.length
+    const colsSize = grid[0].length
 
     const newWorld = new World(rowsSize, colsSize, grid)
     setState({ world: newWorld })
